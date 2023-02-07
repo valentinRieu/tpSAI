@@ -17,6 +17,27 @@ void display() {
 
 }
 
+
+void setup(int argc, char **argv, char *s) {
+
+		
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
+
+	glutInitWindowSize(800, 800);
+	glutInitWindowPosition(50, 50);
+	
+	glutCreateWindow(s);
+	
+	glutDisplayFunc(display);
+
+	glutIdleFunc(update);
+	glutMainLoop();
+
+
+}
+
+
 int main(int argc, char **argv) {
 	time_t now;
 	struct tm *tm;
@@ -78,19 +99,9 @@ int main(int argc, char **argv) {
 			temps %= S_DZ_H;
 		}
 	}
-		
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
 
-	glutInitWindowSize(800, 800);
-	glutInitWindowPosition(50, 50);
-	
-	glutCreateWindow("Montre");
-	
-	glutDisplayFunc(display);
+	setup(argc, argv, "montre");
 
-	glutIdleFunc(update);
-	glutMainLoop();
 	return 0;
 }
 
