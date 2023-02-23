@@ -1,10 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "GL/gl.h"
-#include "GL/glut.h"
+#include "all.h"
 
-int main(int argc, char **argv) {
-
-	printf("ok\n");
-
+int main(int argc, char **argv) {	
+	setup(argc, argv, "affichage");
 }

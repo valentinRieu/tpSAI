@@ -1,15 +1,5 @@
 #include "utils.h"
 
-int temps = 0;
-int speed = 4;
-
-void update() {
-	usleep(1000000 * 1/(speed*4));
-	temps++;
-	temps %= S_DZ_H;
-	glutPostRedisplay();
-}
-
 void afficherGrille() {
 	glBegin(GL_LINES);
 	for(float i = X_MIN + 0.5; i < X_MAX; i++) {
@@ -35,14 +25,33 @@ void afficherPixel(int x, int y) {
 	glVertex2i(x+8, y+8);
 	glVertex2i(x, y+8);
 	glEnd();
+ 
+}
+
+
+void afficherPixelPoint(point p) {
+	glBegin(GL_QUADS);
+	glVertex2i(p.x, p.y);
+	glVertex2i(p.x+8, p.y);
+	glVertex2i(p.x+8, p.y+8);
+	glVertex2i(p.x, p.y+8);
+	glEnd();
 	
 }
 
 
+void afficherPoly(point *points, int nbPoints) {
+
+	for(int i = 0; i < nbPoints; i++) {
+		
+		bresenham(points[i].x, points[i].y, points[(i+1) % nbPoints].x, points[(i+1) % nbPoints].y);
+	}
+}
+
 
 void usage(char *s) {
 
-	printf("usage : %s (<s> <vitesse>) (<heures>) (<minutes>) (<secondes>)\n\tvitesse, heures, minutes et secondes options, valeurs entières\n", s);
+	printf("usage : %s <x y>+\n", s);
 
-	printf("Si pas d'heure donnée, affiche l'heure actuelle avec une vitesse de 4\n");
+	printf("Autant de couple <x y> que de points du polygone à remplir\n");
 }

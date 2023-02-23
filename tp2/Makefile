@@ -11,7 +11,7 @@ SRCS = $(wildcard $(SRC)/*.c)
 OBJS= $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
 BINDIR = bin
-BIN = $(BINDIR)/main
+BIN = $(BINDIR)/remplissage
 
 
 all: $(BIN)

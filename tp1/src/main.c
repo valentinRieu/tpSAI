@@ -12,7 +12,7 @@ void display() {
 	glLoadIdentity();
 	
 	
-	montreEnSec(0, 0, 250, temps);
+	montreEnSec(0, 0, 3000, temps);
 	glutSwapBuffers();
 
 }
