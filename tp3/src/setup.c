@@ -1,6 +1,4 @@
 #include "setup.h"
-Objet o1 = {0};
-Objet o2 = {0};
 
 void setup(int argc, char **argv, char *s) {
 
